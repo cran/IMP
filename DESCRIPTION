@@ -1,0 +1,17 @@
+Package: IMP
+Type: Package
+Title: Interactive Model Performance Evaluation
+Version: 0.1
+Date: 2015-12-18
+Authors@R: person("Anup", "Nair", email = "nairanup50695@gmail.com", role = c("aut","cre"))
+Description: Contains functions for evaluating & comparing the performance of Binary classification models. Functions can be called either statically or interactively (as Shiny Apps).
+License: GPL
+LazyData: TRUE
+Imports: dplyr, ggplot2, stats, tidyr, shiny
+RoxygenNote: 5.0.1
+NeedsCompilation: no
+Packaged: 2015-12-22 18:31:42 UTC; anup.a.nair
+Author: Anup Nair [aut, cre]
+Maintainer: Anup Nair <nairanup50695@gmail.com>
+Repository: CRAN
+Date/Publication: 2015-12-22 20:50:44
