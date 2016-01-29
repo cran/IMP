@@ -53,7 +53,7 @@
 #'    out }
 #'  \dontrun{
 #'  #This will launch a Shiny App
-#'  interPerfMeasures (model_function=glm_model,data=iris,y="Species")}
+#'  interPerfMeasures (model_function = glm_model,data=iris,y="Species")}
 #'
 
 interPerfMeasures <- function(list_models,sample_size_concord = 5000,model_function = NULL,data = NULL,y = NULL) {
@@ -126,23 +126,24 @@ interPerfMeasures <- function(list_models,sample_size_concord = 5000,model_funct
 
 
           out_df <- lapply(seq_along(var_list_combined),function(i) run_formula(var_list_combined[[i]]))
-          out <- staticPerfMeasures(out_df,g=input$bins,sample_size_concord)
+          out <- staticPerfMeasures(out_df,g = input$bins,perf_measures = input$perf_measures, sample_size_concord)
 
         } else {
           g <- as.numeric(input$bins)
-          out <- staticPerfMeasures(list_models,g,sample_size_concord)
+          out <- staticPerfMeasures(list_models,g,perf_measures = input$perf_measures,sample_size_concord)
         }
 
-        if (input$perf_measures=='hosmer'){
-          perf_df <- out[[1]]['hosmer_df']
-          hosmer_test <- out[[1]]['hosmer_results']
-          perf_plot <- out[[2]]['hosmer_plot']
+
+        if (input$perf_measures == 'hosmer'){
+          perf_df <- out$data$hosmer_df
+          hosmer_test <- out$data$hosmer_results
+          perf_plot <- out$plots$hosmer
           return(list(df=perf_df,plot=perf_plot,hosmer_test=hosmer_test))
         }
 
         else{
-          perf_df <- out[[1]][input$perf_measures]
-          perf_plot <- out[[2]][input$perf_measures]
+          perf_df <- out[[1]]
+          perf_plot <- out[[2]]
           return(list(df=perf_df,plot=perf_plot))
         }
 

@@ -1,9 +1,10 @@
-8a91bd6b2d2c37ea1e9a2caf0db37235 *DESCRIPTION
+c2b437325e800124ed53cbb95a594fee *DESCRIPTION
 ef5f86d9fd0915f4745c2e9bd7131bd7 *NAMESPACE
-05d81f003b928fa00d1adf10f4c8961f *R/InternalFunctions.R
-546475c2407f050b0301f1761a2f1ced *R/ShinyFunctions.R
-4b2a5debbb1378403da3ee0d9d55cf3d *R/custom_funcs.R
+6a8316697e8a854c4c1238cc6d56bcc6 *R/InternalFunctions.R
+929ee5cd1a7d62802380c08bafdf4540 *R/ShinyFunctions.R
+083134661021ad3ed98697e48f8afd8d *R/custom_funcs.R
+8cbec21e3ef29a90dbbfbfc6a02590bb *README.md
 70ce3bf7f9e80030bd5512a2ff58eb73 *man/interConfMatrix.Rd
-bb58a55cef4a98cda8063f1f4786061b *man/interPerfMeasures.Rd
-ad7d0f784e5443dac464659d33f8b9f8 *man/staticConfMatrix.Rd
-7d25fcf78b919a3c1f4d0b16f70f709a *man/staticPerfMeasures.Rd
+175a6b1eeb8c3509de040336e5c952b9 *man/interPerfMeasures.Rd
+5d9fa56071d9aa431fa71ecd47982fb2 *man/staticConfMatrix.Rd
+d3933729d1c908ef46d317962d12addc *man/staticPerfMeasures.Rd

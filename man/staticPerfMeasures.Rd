@@ -4,7 +4,8 @@
 \alias{staticPerfMeasures}
 \title{Model evaluation measures for Binary classification models}
 \usage{
-staticPerfMeasures(list_models, g, sample_size_concord = 5000)
+staticPerfMeasures(list_models, g, perf_measures = c("hosmer", "calibration",
+  "lift", "concord"), sample_size_concord = 5000)
 }
 \arguments{
 \item{list_models}{A list of one (or more) dataframes for each model whose performance is to be evaluated. Each dataframe should comprise of 2 columns with the first column indicating the class labels (0 or 1)
@@ -18,6 +19,9 @@ For Lift-Index & Gain charts: Same as HL test, however if g > unique(predicted_p
 are used as such without binning
 
 For calibration plots, g equal sized intervals are created (of width 1/g each)}
+
+\item{perf_measures}{Select the required performance evaluation and validation measure/s, from the following
+options - c('hosmer','calibration','lift','concord'). Default option is All}
 
 \item{sample_size_concord}{For computing concordance-discordance measures (and c-statistic) a random sample
 is drawn from each dataset (if nrow(dataset) > 5000). Default sample size of 5000 can be adjusted by changing the value of this
@@ -36,6 +40,6 @@ model_1 <- glm(Species ~ Sepal.Length,data=iris,family=binomial)
 model_2 <- glm(Species ~ Sepal.Width, data=iris, family = binomial)
 df1 <- data.frame(model_1$y,fitted(model_1))
 df2 <- data.frame(model_2$y,fitted(model_2))
-staticPerfMeasures(list(df1,df2),g=10)
+staticPerfMeasures(list(df1,df2),g=10, perf_measures = c("hosmer","lift"))
 }
 

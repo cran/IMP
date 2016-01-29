@@ -140,7 +140,7 @@ conc_disc <- function(x, g, sample_size_concord) {
 
     con_dis <- expand.grid(df_one, df_zero)
     colnames(con_dis)[1:2] <- c("p_one", "p_zero")
-    con_dis <- con_dis %>% mutate(compare = c("lesser than", "tied", "Greater then")[sign(p_one - p_zero) +
+    con_dis <- con_dis %>% mutate(compare = c("Lesser than", "tied", "Greater than")[sign(p_one - p_zero) +
         2])
 
     con_dis <- con_dis %>% group_by(compare) %>% summarize(Count = n())
@@ -245,15 +245,21 @@ conf_mat_metrics <- function(x, t) {
     TPR <- round(TPR * 100, 2)
     FPR <- matrix[2, 1]/sum(matrix[, 1])
     FPR <- round(FPR * 100, 2)
-    Prec <- matrix[2, 1]/sum(matrix[2, ])
+    Prec <- matrix[2, 2]/sum(matrix[2, ])
+    Prec <- round(Prec * 100, 2)
     output <- data.frame(Threshold = t, Acc = Acc, TPR = TPR, FPR = FPR, Prec = Prec)
     output
 
 }
 
-conf_range <- function(x, reps) {
+conf_range <- function(x, reps, all.unique = F) {
 
-    prob_values <- seq(0, 1, 1/reps)
+    if (all.unique == T) {
+      prob_values <- sort(unique(x[,2]))
+    } else {
+      prob_values <- seq(0, 1, 1/reps)
+    }
+
     out <- lapply(seq_along(prob_values), function(i) conf_mat_metrics(x, prob_values[i]))
     out <- do.call(rbind, out)
     out

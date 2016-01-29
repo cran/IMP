@@ -4,7 +4,7 @@
 \alias{staticConfMatrix}
 \title{Confusion Matrix for Binary Classification Models}
 \usage{
-staticConfMatrix(list_models, t, reps = NULL)
+staticConfMatrix(list_models, t, reps = NULL, reps.all.unique = F)
 }
 \arguments{
 \item{list_models}{A list of one (or more) dataframes for each model whose performance is to be evaluated. Each dataframe should comprise of 2 columns with the first column indicating the class labels (0 or 1)
@@ -15,6 +15,8 @@ and the second column providing the raw predicted probabilities}
 \item{reps}{Performance measures derived from the confusion matrix (Accuracy, TPR, FPR & Precision) are
 computed for a range of different probability thresholds. The "reps" argument controls the number of
 different probability thresholds considered (threshold range given by the sequence - seq(0,1,1/reps))}
+
+\item{reps.all.unique}{Logical; If set to True, Performance measures are computed for each unique Probability value}
 }
 \value{
 If reps = NULL, the output will be a list with 2 components - a confusion matrix
